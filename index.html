@@ -135,9 +135,200 @@
     <script src="src/js/app.js"></script>
 
     <script>
-        // Sistema SPA Simplificado
+        // ===== SISTEMA SPA CORRIGIDO =====
         const validPages = ['home', 'projetos', 'guias', 'grupos', 'eventos', 'discord', 'doacao', 'cadastro', 'formobrigado', '404'];
         
+        // Gerenciador de Acessibilidade para SPA
+        class SPAAccessibilityManager {
+            constructor() {
+                this.currentFontSize = 0;
+                this.isHighContrast = false;
+                this.isReadingMode = false;
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.loadUserPreferences();
+                console.log('🎮 SPAAccessibilityManager inicializado!');
+            }
+
+            setupEventListeners() {
+                // Usa event delegation para funcionar com conteúdo dinâmico
+                document.addEventListener('click', (e) => {
+                    if (e.target.matches('#highContrastBtn, #highContrastBtn *')) {
+                        this.toggleHighContrast();
+                    } else if (e.target.matches('#fontSizeBtn, #fontSizeBtn *')) {
+                        this.increaseFontSize();
+                    } else if (e.target.matches('#readingModeBtn, #readingModeBtn *')) {
+                        this.toggleReadingMode();
+                    } else if (e.target.matches('#resetAccessibilityBtn, #resetAccessibilityBtn *')) {
+                        this.resetAccessibility();
+                    }
+                });
+
+                // Navegação por teclado
+                document.addEventListener('keydown', (e) => this.handleKeyboardNavigation(e));
+            }
+
+            toggleHighContrast() {
+                this.isHighContrast = !this.isHighContrast;
+                document.body.classList.toggle('high-contrast', this.isHighContrast);
+                
+                const button = document.getElementById('highContrastBtn');
+                if (button) button.setAttribute('aria-pressed', this.isHighContrast);
+                
+                this.saveUserPreferences();
+                console.log('🌗 Alto contraste:', this.isHighContrast);
+            }
+
+            increaseFontSize() {
+                this.currentFontSize = (this.currentFontSize + 1) % 4;
+                
+                document.body.classList.remove('font-large', 'font-xlarge', 'font-xxlarge');
+                
+                switch(this.currentFontSize) {
+                    case 1:
+                        document.body.classList.add('font-large');
+                        console.log('🔍 Fonte: Grande');
+                        break;
+                    case 2:
+                        document.body.classList.add('font-xlarge');
+                        console.log('🔍 Fonte: Extra Grande');
+                        break;
+                    case 3:
+                        document.body.classList.add('font-xxlarge');
+                        console.log('🔍 Fonte: Máxima');
+                        break;
+                    default:
+                        console.log('🔍 Fonte: Normal');
+                }
+                
+                this.saveUserPreferences();
+            }
+
+            toggleReadingMode() {
+                this.isReadingMode = !this.isReadingMode;
+                document.body.classList.toggle('reading-mode', this.isReadingMode);
+                
+                const button = document.getElementById('readingModeBtn');
+                if (button) button.setAttribute('aria-pressed', this.isReadingMode);
+                
+                this.saveUserPreferences();
+                console.log('📖 Modo leitura:', this.isReadingMode);
+            }
+
+            resetAccessibility() {
+                this.currentFontSize = 0;
+                this.isHighContrast = false;
+                this.isReadingMode = false;
+                
+                document.body.className = '';
+                
+                // Reseta todos os botões
+                const buttons = ['highContrastBtn', 'fontSizeBtn', 'readingModeBtn'];
+                buttons.forEach(btnId => {
+                    const button = document.getElementById(btnId);
+                    if (button) button.setAttribute('aria-pressed', 'false');
+                });
+                
+                this.saveUserPreferences();
+                console.log('🔄 Acessibilidade resetada');
+            }
+
+            handleKeyboardNavigation(event) {
+                // Atalhos de teclado para acessibilidade
+                if (event.altKey) {
+                    switch(event.key) {
+                        case '1':
+                            event.preventDefault();
+                            document.getElementById('inicio')?.scrollIntoView({ behavior: 'smooth' });
+                            break;
+                        case '2':
+                            event.preventDefault();
+                            document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' });
+                            break;
+                        case '3':
+                            event.preventDefault();
+                            document.getElementById('mentoria')?.scrollIntoView({ behavior: 'smooth' });
+                            break;
+                        case '0':
+                            event.preventDefault();
+                            this.resetAccessibility();
+                            break;
+                    }
+                }
+            }
+
+            saveUserPreferences() {
+                const preferences = {
+                    fontSize: this.currentFontSize,
+                    highContrast: this.isHighContrast,
+                    readingMode: this.isReadingMode,
+                    timestamp: Date.now()
+                };
+                
+                try {
+                    localStorage.setItem('platinaAccessibility', JSON.stringify(preferences));
+                } catch (error) {
+                    console.warn('Não foi possível salvar preferências:', error);
+                }
+            }
+
+            loadUserPreferences() {
+                try {
+                    const saved = localStorage.getItem('platinaAccessibility');
+                    if (saved) {
+                        const preferences = JSON.parse(saved);
+                        
+                        this.currentFontSize = preferences.fontSize || 0;
+                        this.isHighContrast = preferences.highContrast || false;
+                        this.isReadingMode = preferences.readingMode || false;
+                        
+                        // Aplica as preferências salvas
+                        if (this.isHighContrast) document.body.classList.add('high-contrast');
+                        if (this.isReadingMode) document.body.classList.add('reading-mode');
+                        
+                        switch(this.currentFontSize) {
+                            case 1: document.body.classList.add('font-large'); break;
+                            case 2: document.body.classList.add('font-xlarge'); break;
+                            case 3: document.body.classList.add('font-xxlarge'); break;
+                        }
+                    }
+                } catch (error) {
+                    console.warn('Não foi possível carregar preferências:', error);
+                }
+            }
+        }
+
+        // Sistema SPA Principal
+        let spaAccessibilityManager = null;
+
+        function initializeSPA() {
+            if (!spaAccessibilityManager) {
+                spaAccessibilityManager = new SPAAccessibilityManager();
+            }
+            
+            // Scroll suave para links âncora
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            console.log('✅ SPA inicializado com acessibilidade');
+        }
+
         function loadPage(page) {
             if (!validPages.includes(page)) {
                 loadPage('404');
@@ -156,6 +347,9 @@
                     app.innerHTML = html;
                     window.scrollTo(0, 0);
                     window.history.pushState({}, '', `#/${page}`);
+                    
+                    // INICIALIZA A ACESSIBILIDADE PARA A NOVA PÁGINA
+                    setTimeout(initializeSPA, 50);
                 })
                 .catch(error => {
                     console.error('Erro:', error);
@@ -182,9 +376,22 @@
         });
 
         window.addEventListener('hashchange', handleNavigation);
+        
         window.addEventListener('DOMContentLoaded', function() {
             if (window.location.hash) {
                 handleNavigation();
+            }
+            
+            // Inicializa acessibilidade global
+            spaAccessibilityManager = new SPAAccessibilityManager();
+        });
+
+        // Suporte a navegação SPA para links
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a');
+            if (link && link.href && link.href.includes('#/')) {
+                e.preventDefault();
+                window.location.hash = new URL(link.href).hash;
             }
         });
     </script>
