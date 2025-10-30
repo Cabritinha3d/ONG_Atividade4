@@ -1,0 +1,275 @@
+/* src/css/accessibility.css - Recursos de Acessibilidade WCAG 2.1 AA */
+
+/* ===== MODOS DE ACESSIBILIDADE ===== */
+
+/* Modo Alto Contraste */
+.high-contrast {
+    --text-light: #000000 !important;
+    --text-dark: #FFFFFF !important;
+    --dark-bg: #FFFFFF !important;
+    --darker-bg: #F0F0F0 !important;
+    --light-bg: #E8E8E8 !important;
+    filter: contrast(200%) !important;
+}
+
+.high-contrast .card,
+.high-contrast .nav-main,
+.high-contrast .section-light {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+/* Modo Daltonismo (Protanopia) */
+.colorblind-friendly {
+    --accent-red: #0072B2 !important;
+    --accent-blue: #56B4E9 !important;
+    --accent-orange: #E69F00 !important;
+    --accent-purple: #CC79A7 !important;
+}
+
+/* Modo Leitura Fácil */
+.reading-mode {
+    --text-light: #000000 !important;
+    --text-dark: #000000 !important;
+    --dark-bg: #FFFFF0 !important;
+    --darker-bg: #F5F5DC !important;
+    font-family: "Comic Sans MS", "Arial Rounded MT Bold", sans-serif !important;
+    font-size: 1.1em !important;
+    line-height: 1.8 !important;
+}
+
+/* ===== CONTROLES DE ACESSIBILIDADE ===== */
+
+/* Container dos controles */
+.accessibility-controls {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background: var(--darker-bg);
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accessibility-btn {
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessibility-btn:hover,
+.accessibility-btn:focus {
+    background: var(--accent-orange);
+    transform: scale(1.1);
+}
+
+/* ===== FOCUS E NAVEGAÇÃO POR TECLADO ===== */
+
+/* Estilos de foco visíveis */
+a:focus,
+button:focus,
+.nav-link:focus,
+.btn:focus,
+.download-btn:focus {
+    outline: 3px solid #FF4757 !important;
+    outline-offset: 3px !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+}
+
+/* Foco para elementos de formulário */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #3742fa !important;
+    outline-offset: 2px !important;
+    border-color: #3742fa !important;
+}
+
+/* Skip link para navegação por teclado */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #FF4757;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1001;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 6px;
+    outline: 3px solid #FFFFFF;
+}
+
+/* ===== SUPORTE A LEITORES DE TELA ===== */
+
+/* Esconder elementos visualmente (mas acessíveis para screen readers) */
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Indicar elementos interativos para screen readers */
+[aria-expanded]::after {
+    content: " (pressione Enter para expandir)";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* ===== TIPOGRAFIA ACESSÍVEL ===== */
+
+/* Aumentar tamanho da fonte */
+.font-large {
+    font-size: 1.2em !important;
+    line-height: 1.8 !important;
+}
+
+.font-xlarge {
+    font-size: 1.4em !important;
+    line-height: 2 !important;
+}
+
+/* Espaçamento aumentado para leitura */
+.spacing-increased {
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.1em !important;
+    line-height: 2 !important;
+}
+
+/* ===== ANIMAÇÕES E TRANSITIONS ===== */
+
+/* Reduzir movimento para usuários sensíveis */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Desabilitar animações */
+.no-animation * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* ===== CONTRASTE E CORES ===== */
+
+/* Garantir contraste mínimo */
+.contrast-check {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+}
+
+/* Texto sempre legível */
+.ensure-contrast {
+    background: linear-gradient(to bottom, var(--dark-bg), var(--darker-bg)) !important;
+    color: var(--text-light) !important;
+}
+
+/* ===== FORMULÁRIOS ACESSÍVEIS ===== */
+
+/* Labels sempre visíveis */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+/* Campos de formulário com bom contraste */
+input, select, textarea {
+    background: white !important;
+    color: #000000 !important;
+    border: 2px solid #666666 !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+}
+
+/* Estados de validação */
+input:invalid {
+    border-color: #FF4757 !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+}
+
+input:valid {
+    border-color: #2ED573 !important;
+}
+
+/* ===== RESPONSIVIDADE ACESSÍVEL ===== */
+
+@media (max-width: 768px) {
+    .accessibility-controls {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: row;
+        border-radius: 10px 10px 0 0;
+        width: auto;
+    }
+    
+    .accessibility-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
+
+/* ===== UTILITÁRIOS ===== */
+
+/* Indicador visual de estado */
+[aria-current="page"] {
+    background-color: var(--accent-orange) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* Loading states para screen readers */
+[aria-busy="true"]::before {
+    content: "Carregando... ";
+}
+
+/* Estados de erro e sucesso */
+[aria-invalid="true"] {
+    border-color: #FF4757 !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+}
+
+[aria-grabbed="true"] {
+    opacity: 0.6;
+}
