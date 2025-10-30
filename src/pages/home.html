@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platina Para Todos - Home</title>
+</head>
+<body>
+    <!-- Skip Link para Navegação por Teclado -->
+    <a href="#main-content" class="skip-link sr-only">Pular para o conteúdo principal</a>
+
+    <!-- Controles de Acessibilidade -->
+    <div class="accessibility-controls" aria-label="Controles de acessibilidade">
+        <button class="accessibility-btn" id="highContrastBtn" aria-label="Ativar modo alto contraste" title="Alto Contraste">
+            🌗
+        </button>
+        <button class="accessibility-btn" id="fontSizeBtn" aria-label="Aumentar tamanho da fonte" title="Fonte Maior">
+            🔍
+        </button>
+        <button class="accessibility-btn" id="readingModeBtn" aria-label="Ativar modo de leitura" title="Modo Leitura">
+            📖
+        </button>
+        <button class="accessibility-btn" id="resetAccessibilityBtn" aria-label="Redefinir todas as configurações de acessibilidade" title="Redefinir">
+            🔄
+        </button>
+    </div>
+
+    <!-- Navegação Principal -->
+    <nav class="nav-main" aria-label="Navegação principal">
+        <a href="#/home" class="nav-link" aria-current="page">🏠 INÍCIO</a>
+        <a href="#sobre" class="nav-link">📖 SOBRE</a>
+        <a href="#/projetos" class="nav-link">🎯 MENTORIA</a>
+        <a href="#/guias" class="nav-link">📚 GUIAS</a>
+        <a href="#/discord" class="nav-link">💬 DISCORD</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+        <!-- Sobre Section -->
+        <section id="sobre" class="section section-light">
+            <div class="container">
+                <!-- Card Objetivo -->
+                <div class="objective-card">
+                    <h2 class="title-badge">🎯 NOSSO OBJETIVO</h2>
+                    <p>
+                        <strong>Democratizar o acesso à conclusão total de jogos!</strong> Criamos uma rede de apoio onde gamers 
+                        experientes ajudam iniciantes a superar desafios, conquistar troféus e, o mais importante: 
+                        <strong>se divertir sem frustração!</strong>
+                    </p>
+                </div>
+
+                <!-- Grid com Menu Lateral e Conteúdo -->
+                <div class="grid grid-sidebar">
+                    <!-- Menu Lateral -->
+                    <aside>
+                        <div class="service-menu">
+                            <h3>NOSSOS SERVIÇOS</h3>
+                            <p>Escolha como podemos te ajudar</p>
+                            
+                            <a href="#/projetos" class="service-link">
+                                <div class="service-item" style="border-left-color: var(--accent-red);">
+                                    <strong>🎯 MENTORIA</strong>
+                                </div>
+                            </a>
+                            
+                            <a href="#/guias" class="service-link">
+                                <div class="service-item" style="border-left-color: var(--accent-blue);">
+                                    <strong>📚 GUIAS</strong>
+                                </div>
+                            </a>
+                            
+                            <a href="#/grupos" class="service-link">
+                                <div class="service-item" style="border-left-color: var(--accent-orange);">
+                                    <strong>👥 GRUPOS</strong>
+                                </div>
+                            </a>
+                            
+                            <a href="#/eventos" class="service-link">
+                                <div class="service-item" style="border-left-color: var(--accent-purple);">
+                                    <strong>🎪 EVENTOS</strong>
+                                </div>
+                            </a>
+                            
+                            <a href="#/discord" class="service-link">
+                                <div class="service-item" style="border-left-color: var(--accent-blue);">
+                                    <strong>💬 DISCORD</strong>
+                                </div>
+                            </a>
+                        </div>
+                    </aside>
+
+                    <!-- Conteúdo Principal -->
+                    <article>
+                        <!-- História da ONG -->
+                        <div class="card card-highlight">
+                            <div class="title-badge">CONHEÇA A NOSSA HISTÓRIA</div>
+                            
+                            <!-- Imagem no Início -->
+                            <div class="image-container">
+                                <img src="src/images/sobre0.jpeg" alt="Fundadores da Platina Para Todos se reunindo - Miss Cabrita, Miana Mori e Big planejando a comunidade" class="responsive-image">
+                            </div>
+
+                            <div class="content">
+                                <p>Era só mais um dia calmo de verão em <strong style="color: var(--accent-red);">Gameburg...</strong> até que o caos se instaurou nas estalagens da cidade.</p>
+                                
+                                <p>De um lado, <strong style="color: var(--accent-red);">Miss Cabrita, a calma</strong>, acabara de quebrar seu terceiro controle no mesmo chefe de Bloodborne. Do outro, <strong style="color: var(--accent-blue);">Miana Mori, a paciente</strong>, estava há 8 horas presa no tutorial de Cuphead. E não muito longe dali, <strong style="color: var(--accent-orange);">Big, o estrategista</strong>, após zerar Tibia, planejou 47 novas rotas de hunt perfeitas para profitar, porém todas as hunts estavam ocupadas pela dominante.</p>
+                                
+                                <!-- Imagem no Meio -->
+                                <div class="image-container">
+                                    <img src="src/images/sobre1.jpeg" alt="Comunidade Platina Para Todos ajudando gamers em diversos jogos - ambiente colaborativo e divertido" class="responsive-image">
+                                </div>
+
+                                <div class="highlight-box">
+                                    <p class="highlight-title">O destino:</p>
+                                    <p>Os três se esbarraram no mesmo fórum de desespero gamer, cada um xingando um jogo diferente numa sexta-feira à noite. Foi quando perceberam - <strong>o sofrimento em grupo é muito mais divertido!</strong></p>
+                                </div>
+                                
+                                <p><strong style="color: var(--accent-red);">A lenda nasce:</strong> Daquele verão em Gameburg surgiu a maior comunidade de apoio gamer do Brasil! Provamos que platinar não precisa ser um martírio - pode ser <strong>DIVERTIDO!</strong></p>
+                                
+                                <!-- Imagem no Fim -->
+                                <div class="image-container">
+                                    <img src="src/images/sobre2.jpeg" alt="Missão da Platina Para Todos - Gamers comemorando conquistas e troféus conquistados" class="responsive-image">
+                                </div>
+
+                                <div class="quote-card">
+                                    <p>"De Gameburg para o mundo: unindo os desesperados, treinando os novatos e rindo dos chefes quase-impossíveis!"</p>
+                                </div>
+
+                                <!-- Botão de Ação -->
+                                <div class="button-group">
+                                    <a href="#/cadastro" class="btn btn-primary">
+                                        🎮 QUERO ME CADASTRAR
+                                    </a>
+                                    <a href="#/discord" class="btn btn-accent">
+                                        💬 ENTRAR NO DISCORD
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Relatos Section -->
+        <section id="relatos" class="section section-dark">
+            <div class="container">
+                <h2 class="title-badge">💙 HISTÓRIAS INSPIRADORAS</h2>
+                
+                <div class="grid grid-2">
+                    <!-- Depoimento 1 -->
+                    <div class="testimonial">
+                        <h4 style="color: var(--accent-orange);">🎯 Malenia_Killer</h4>
+                        <p><em>"Estava há 6 MESES travado no Malenia. Com a ajuda do Vovo_Gamer, não só venci como salvei meu casamento!"</em></p>
+                        <div class="testimonial-status">
+                            <p><strong>Status:</strong> 🏆 PLATINA | 💍 CASAMENTO SALVO</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 2 -->
+                    <div class="testimonial">
+                        <h4 style="color: var(--accent-red);">👑 Aninha_Gameplay</h4>
+                        <p><em>"Meu irmão sempre me zoava. Com a Rainha_Dos_Boss, platinsei Sekiro e calei a boca dele!"</em></p>
+                        <div class="testimonial-status">
+                            <p><strong>Status:</strong> 🏆 PLATINA | 👊 IRMÃO HUMILHADO</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 3 -->
+                    <div class="testimonial">
+                        <h4 style="color: var(--accent-blue);">⚡ João_Sem_Controle</h4>
+                        <p><em>"Já tinha quebrado 2 controles. Com o Monge_Zen, platinei sem rage e meu controle tá intacto!"</em></p>
+                        <div class="testimonial-status">
+                            <p><strong>Status:</strong> 🏆 PLATINA | 🎮 2 CONTROLES POUPADOS</p>
+                        </div>
+                    </div>
+
+                    <!-- Depoimento 4 -->
+                    <div class="testimonial">
+                        <h4 style="color: var(--accent-purple);">💖 Casal_Gamer</h4>
+                        <p><em>"It Takes Two quase terminou nosso relacionamento. Agora vamos nos casar!"</em></p>
+                        <div class="testimonial-status">
+                            <p><strong>Status:</strong> 🏆 PLATINA | 💒 CASAMENTO MARCADO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doação Section -->
+        <section id="doacao" class="section section-gradient">
+            <div class="container">
+                <h2>🚀 JUNTE-SE A NOSSA MISSÃO!</h2>
+                <div class="stats-card">
+                    <p>+800 gamers salvos | +1500 controles poupados | +200 relacionamentos salvos</p>
+                </div>
+                <p class="mission-quote">
+                    "Não deixe que um boss ridículo estrague seu dia, seu controle ou seu relacionamento!"
+                </p>
+                
+                <div class="button-group">
+                    <a href="#/doacao" class="btn btn-accent">
+                        💝 QUERO DOAR
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>📧 misscabritas2@gmail.com</p>
+            <p>🔗 <a href="#/discord" style="color: white;">Entre no nosso Discord</a></p>
+            <p>Platina Para Todos &copy; 2007</p>
+        </div>
+    </footer>
+
+    <style>
+        /* Estilos específicos do home.html */
+        .objective-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid var(--accent-orange);
+        }
+
+        .objective-card p {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-menu {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-menu h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-menu p {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .image-container {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .responsive-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid var(--accent-blue);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-accent {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .mission-quote {
+            font-size: 1.4rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: var(--text-light);
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .grid-sidebar {
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</body>
+</html>
