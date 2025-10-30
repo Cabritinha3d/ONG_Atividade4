@@ -2,7 +2,7 @@
 
 /* ===== CONTROLES DE ACESSIBILIDADE ===== */
 .accessibility-controls {
-    position: fixed;
+    position: sticky;
     top: 50%;
     right: 0;
     transform: translateY(-50%);
