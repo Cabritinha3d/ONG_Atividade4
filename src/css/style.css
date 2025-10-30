@@ -1,0 +1,208 @@
+/* src/css/style.css - Base Styles for Platina Para Todos */
+:root {
+    /* Cores principais */
+    --accent-red: #ff4757;
+    --accent-blue: #3742fa;
+    --accent-orange: #ffa502;
+    --accent-purple: #8e44ad;
+    --accent-green: #2ed573;
+    
+    /* Cores de fundo */
+    --dark-bg: #1a1a2e;
+    --darker-bg: #16213e;
+    --light-bg: #f1f2f6;
+    
+    /* Cores de texto */
+    --text-light: #ffffff;
+    --text-dark: #2f3542;
+    
+    /* Espaçamentos */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+}
+
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Navegação */
+.nav-main {
+    background: var(--darker-bg);
+    padding: var(--space-sm);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--accent-orange);
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-orange);
+    transform: translateY(-2px);
+}
+
+/* Seções */
+.section {
+    padding: var(--space-xl) 0;
+}
+
+.section-light {
+    background: var(--light-bg);
+    color: var(--text-dark);
+}
+
+.section-dark {
+    background: var(--darker-bg);
+    color: var(--text-light);
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--space-sm);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--accent-red), var(--accent-orange));
+    color: var(--text-light);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+}
+
+/* Cards */
+.card {
+    background: var(--light-bg);
+    color: var(--text-dark);
+    padding: var(--space-lg);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--space-md);
+}
+
+/* Grid system */
+.grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-main {
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding: var(--space-xs);
+    }
+    
+    .nav-link {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.9rem;
+    }
+    
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .section {
+        padding: var(--space-lg) 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Utilitários */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
