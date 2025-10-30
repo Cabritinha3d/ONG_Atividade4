@@ -4,307 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Platina Para Todos - Home</title>
-    <style>
-        /* ===== ESTILOS ESPECÍFICOS DO HOME.HTML ===== */
-        
-        /* Card Objetivo */
-        .objective-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            border-left: 5px solid var(--accent-orange);
-        }
-
-        .objective-card p {
-            color: var(--text-dark);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .objective-card strong {
-            color: var(--accent-red);
-        }
-
-        /* Menu de Serviços */
-        .service-menu {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .service-menu h3 {
-            color: var(--accent-purple);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            text-align: center;
-        }
-
-        .service-menu p {
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .service-item {
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 4px solid;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .service-item:hover {
-            transform: translateX(8px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-item strong {
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        /* Container de Imagens */
-        .image-container {
-            margin: 2.5rem 0;
-            text-align: center;
-        }
-
-        .responsive-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            border: 3px solid white;
-        }
-
-        /* Destaques */
-        .highlight-box {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin: 2.5rem 0;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .highlight-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--accent-orange);
-            font-weight: bold;
-        }
-
-        /* Card de Citação */
-        .quote-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-left: 5px solid var(--accent-blue);
-            padding: 2rem;
-            margin: 2.5rem 0;
-            border-radius: 10px;
-            font-style: italic;
-            color: var(--text-dark);
-            text-align: center;
-        }
-
-        /* Botões Especiais */
-        .btn-accent {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            color: white;
-        }
-
-        .btn-accent:hover,
-        .btn-accent:focus {
-            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.3);
-        }
-
-        /* Cards de Estatísticas */
-        .stats-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Citação da Missão */
-        .mission-quote {
-            font-size: 1.4rem;
-            text-align: center;
-            margin: 2.5rem 0;
-            font-style: italic;
-            color: var(--text-light);
-            font-weight: 500;
-            line-height: 1.8;
-        }
-
-        .mission-quote strong {
-            color: var(--accent-orange);
-        }
-
-        /* Grid Sidebar */
-        .grid-sidebar {
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-        }
-
-        /* Card Highlight */
-        .card-highlight {
-            border: 3px solid var(--accent-orange);
-            box-shadow: 0 10px 30px rgba(255, 165, 2, 0.2);
-        }
-
-        /* Title Badge */
-        .title-badge {
-            background: linear-gradient(45deg, var(--accent-red), var(--accent-orange));
-            color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            display: inline-block;
-            margin-bottom: 2rem;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
-        }
-
-        /* Depoimentos */
-        .testimonial {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        .testimonial h4 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .testimonial p {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .testimonial-status {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            border-left: 3px solid var(--accent-green);
-        }
-
-        .testimonial-status p {
-            color: var(--text-dark);
-            margin: 0;
-            font-style: normal;
-            font-weight: bold;
-        }
-
-        /* Seção Gradient */
-        .section-gradient {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            color: var(--text-light);
-        }
-
-        /* Grupo de Botões */
-        .button-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        /* Conteúdo */
-        .content {
-            padding: 2rem;
-        }
-
-        .content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-
-        .content strong {
-            color: var(--accent-red);
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .grid-sidebar {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-menu {
-                padding: 1.5rem;
-            }
-            
-            .service-item {
-                padding: 1rem;
-            }
-            
-            .objective-card {
-                padding: 1.5rem;
-            }
-            
-            .highlight-box {
-                padding: 1.5rem;
-            }
-            
-            .quote-card {
-                padding: 1.5rem;
-            }
-            
-            .button-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-            
-            .title-badge {
-                padding: 0.6rem 1.5rem;
-                font-size: 1.1rem;
-            }
-            
-            .content {
-                padding: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Skip Link para Navegação por Teclado -->
     <a href="#main-content" class="skip-link sr-only">Pular para o conteúdo principal</a>
+
+    <!-- Controles de Acessibilidade -->
+    <div class="accessibility-controls" aria-label="Controles de acessibilidade">
+        <button class="accessibility-btn" id="highContrastBtn" aria-label="Ativar modo alto contraste" title="Alto Contraste">
+            🌗
+        </button>
+        <button class="accessibility-btn" id="fontSizeBtn" aria-label="Aumentar tamanho da fonte" title="Fonte Maior">
+            🔍
+        </button>
+        <button class="accessibility-btn" id="readingModeBtn" aria-label="Ativar modo de leitura" title="Modo Leitura">
+            📖
+        </button>
+        <button class="accessibility-btn" id="resetAccessibilityBtn" aria-label="Redefinir todas as configurações de acessibilidade" title="Redefinir">
+            🔄
+        </button>
+    </div>
 
     <!-- Navegação Principal -->
     <nav class="nav-main" aria-label="Navegação principal">
@@ -496,5 +215,155 @@
             <p>Platina Para Todos &copy; 2007</p>
         </div>
     </footer>
+
+    <style>
+        /* Estilos específicos do home.html */
+        .objective-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid var(--accent-orange);
+        }
+
+        .objective-card p {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-menu {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-menu h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-menu p {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .image-container {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .responsive-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid var(--accent-blue);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-accent {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+        }
+
+        .stats-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .mission-quote {
+            font-size: 1.4rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: var(--text-light);
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        .grid-sidebar {
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-sidebar {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </body>
 </html>
