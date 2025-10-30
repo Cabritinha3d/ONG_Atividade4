@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Mentoria - Platina Para Todos</title>
+</head>
+<body>
+    <!-- Skip Link para Navegação por Teclado -->
+    <a href="#main-content" class="skip-link sr-only">Pular para o conteúdo principal</a>
+
+    <!-- Navegação Principal SPA -->
+    <nav class="nav-main" aria-label="Navegação principal">
+        <a href="#/home" class="nav-link" data-route="home">🏠 INÍCIO</a>
+        <a href="#sobre" class="nav-link">📖 SOBRE</a>
+        <a href="#/projetos" class="nav-link" data-route="projetos">🎯 MENTORIA</a>
+        <a href="#/guias" class="nav-link" data-route="guias">📚 GUIAS</a>
+        <a href="#/grupos" class="nav-link" data-route="grupos">👥 GRUPOS</a>
+        <a href="#/eventos" class="nav-link" data-route="eventos">🎪 EVENTOS</a>
+        <a href="#/discord" class="nav-link" data-route="discord">💬 DISCORD</a>
+        <a href="#/doacao" class="nav-link" data-route="doacao">💝 DOAÇÃO</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="section section-gradient" aria-labelledby="mentoria-title">
+            <div class="container">
+                <h1 id="mentoria-title" class="title-badge">🎯 SOLICITAR MENTORIA</h1>
+                <p class="mission-quote">
+                    <strong>Preencha o formulário abaixo</strong> e nossos mentores entrarão em contato em até 24 horas para te ajudar a conquistar aquela platina!
+                </p>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="section section-light" aria-labelledby="form-title">
+            <div class="container">
+                <div class="form-container">
+                    <div class="info-box">
+                        <h2 id="form-title" style="margin: 0 0 15px 0; font-size: 2em; color: white !important;">🚀 VAMOS COMEÇAR SUA JORNADA!</h2>
+                        <p style="margin: 0; font-size: 1.2em; color: white !important;">Preencha o formulário e entraremos em contato em até 24h!</p>
+                    </div>
+                    
+                    <div class="form-card">
+                        <form id="mentoria-form" action="https://formsubmit.co/misscabritas2@gmail.com" method="POST" data-validate>
+                            <!-- Campos hidden do FormSubmit -->
+                            <input type="hidden" name="_next" value="#/formobrigado">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="Nova solicitação de mentoria - Platina Para Todos">
+                            
+                            <!-- Nome -->
+                            <div class="form-group">
+                                <label for="nome" class="required">👤 Seu Nome (ou apelido):</label>
+                                <input type="text" id="nome" name="nome" required 
+                                       data-validate="required min-length-3"
+                                       placeholder="Ex: GameMaster123"
+                                       aria-describedby="nome-help">
+                                <small id="nome-help" class="sr-only">Digite seu nome ou apelido (mínimo 3 caracteres)</small>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email" class="required">📧 Seu Email:</label>
+                                <input type="email" id="email" name="email" required 
+                                       data-validate="required email"
+                                       placeholder="seuemail@exemplo.com"
+                                       aria-describedby="email-help">
+                                <small id="email-help" class="sr-only">Digite um email válido para contato</small>
+                            </div>
+                            
+                            <!-- Jogo -->
+                            <div class="form-group">
+                                <label for="jogo" class="required">🎮 Jogo que precisa de ajuda:</label>
+                                <input type="text" id="jogo" name="jogo" required 
+                                       data-validate="required min-length-3"
+                                       placeholder="Ex: Elden Ring, Sekiro, Cuphead..."
+                                       aria-describedby="jogo-help">
+                                <small id="jogo-help" class="sr-only">Digite o nome do jogo onde precisa de ajuda</small>
+                            </div>
+                            
+                            <!-- Plataforma -->
+                            <div class="form-group">
+                                <label for="plataforma" class="required">💻 Plataforma:</label>
+                                <select id="plataforma" name="plataforma" required 
+                                        data-validate="required"
+                                        aria-describedby="plataforma-help">
+                                    <option value="" disabled selected>Selecione sua plataforma...</option>
+                                    <option value="ps5">PlayStation 5</option>
+                                    <option value="ps4">PlayStation 4</option>
+                                    <option value="xbox">Xbox Series X/S</option>
+                                    <option value="pc">PC</option>
+                                    <option value="nintendo">Nintendo Switch</option>
+                                    <option value="outra">Outra</option>
+                                </select>
+                                <small id="plataforma-help" class="sr-only">Selecione a plataforma onde você joga</small>
+                            </div>
+                            
+                            <!-- Dificuldade -->
+                            <div class="form-group">
+                                <label for="dificuldade" class="required">🔥 Nível de Dificuldade:</label>
+                                <select id="dificuldade" name="dificuldade" required 
+                                        data-validate="required"
+                                        aria-describedby="dificuldade-help">
+                                    <option value="" disabled selected>Selecione seu nível...</option>
+                                    <option value="iniciante">🐣 Iniciante - Primeira vez no jogo</option>
+                                    <option value="intermediario">🎯 Intermediário - Já joguei mas travei</option>
+                                    <option value="avancado">💀 Avançado - Só falta os troféus difíceis</option>
+                                </select>
+                                <small id="dificuldade-help" class="sr-only">Selecione seu nível de experiência no jogo</small>
+                            </div>
+                            
+                            <!-- Mensagem -->
+                            <div class="form-group">
+                                <label for="mensagem" class="required">💬 Conte-nos sobre seu desafio:</label>
+                                <textarea id="mensagem" name="mensagem" rows="5" required 
+                                          data-validate="required min-length-10"
+                                          placeholder="Ex: Estou travado no chefe Malenia há 2 semanas, preciso de dicas de esquiva e build..."
+                                          aria-describedby="mensagem-help"></textarea>
+                                <small id="mensagem-help" class="sr-only">Descreva em detalhes o desafio que está enfrentando (mínimo 10 caracteres)</small>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn" aria-live="polite">
+                                🚀 SOLICITAR MENTORIA GRATUITA
+                            </button>
+                        </form>
+                        
+                        <div class="success-box" role="status">
+                            <p style="margin: 0; font-size: 0.95em; color: white !important;">
+                                <strong>💡 Como funciona:</strong> Nossos mentores entram em contato por email para combinar os melhores horários. Atendimento 100% gratuito!
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 20px; text-align: center;">
+                            <p style="color: #7f8c8d; font-size: 0.9em; margin: 0;">
+                                Campos marcados com <span style="color: #ff4757;">*</span> são obrigatórios
+                            </p>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="#/projetos" class="back-btn" data-route="projetos">← Voltar para Mentoria</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="section section-dark" aria-labelledby="como-funciona">
+            <div class="container">
+                <h2 id="como-funciona" class="title-badge">⭐ COMO FUNCIONA NOSSA MENTORIA</h2>
+                
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="service-item" style="border-left-color: var(--accent-red);">
+                            <h3 style="color: var(--accent-red);">📝 1. Preencha o Formulário</h3>
+                            <p>Conte-nos sobre seu desafio específico no jogo</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="service-item" style="border-left-color: var(--accent-blue);">
+                            <h3 style="color: var(--accent-blue);">👥 2. Encontre Seu Mentor</h3>
+                            <p>Conectamos você com experts no seu jogo</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="service-item" style="border-left-color: var(--accent-orange);">
+                            <h3 style="color: var(--accent-orange);">🏆 3. Conquiste a Platina!</h3>
+                            <p>Sessões personalizadas até sua vitória</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>📧 <a href="mailto:misscabritas2@gmail.com" style="color: white;">misscabritas2@gmail.com</a></p>
+            <p>🔗 <a href="#/discord" style="color: white;" data-route="discord">Entre no nosso Discord</a></p>
+            <p>Platina Para Todos &copy; 2007</p>
+        </div>
+    </footer>
+
+    <style>
+        .form-container { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+        }
+        .form-card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            margin-top: 20px;
+        }
+        .form-group { 
+            margin-bottom: 25px; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            color: var(--text-dark); 
+            font-weight: bold;
+            font-size: 1em;
+        }
+        input, select, textarea { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 2px solid #bdc3c7; 
+            border-radius: 8px; 
+            font-size: 1em; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            transition: all 0.3s;
+            color: var(--text-dark);
+            background: white;
+        }
+        input:focus, select:focus, textarea:focus { 
+            border-color: var(--accent-red); 
+            outline: none; 
+            box-shadow: 0 0 5px rgba(255, 71, 87, 0.3);
+        }
+        .submit-btn { 
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-orange));
+            color: white; 
+            padding: 16px 30px; 
+            border: none; 
+            border-radius: 25px; 
+            font-size: 1.1em; 
+            cursor: pointer; 
+            width: 100%; 
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover,
+        .submit-btn:focus { 
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .required::after {
+            content: " *";
+            color: var(--accent-red);
+        }
+        .info-box {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .back-btn {
+            background: var(--accent-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-btn:hover,
+        .back-btn:focus {
+            background: var(--accent-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .success-box {
+            background: linear-gradient(135deg, var(--accent-green), #20c997);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-left: 4px solid #155724;
+        }
+        
+        /* Estilos para validação */
+        .error {
+            border-color: var(--accent-red) !important;
+            background-color: #fff5f5;
+        }
+        
+        .success {
+            border-color: var(--accent-green) !important;
+            background-color: #f0fff4;
+        }
+        
+        .error-message {
+            color: var(--accent-red);
+            font-size: 0.85em;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+        .success-message {
+            background: var(--accent-green);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        /* Loading state */
+        .submit-btn.loading {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        /* Placeholder color */
+        ::placeholder {
+            color: #7f8c8d;
+        }
+        
+        /* Acessibilidade para foco */
+        input:focus,
+        select:focus,
+        textarea:focus,
+        .submit-btn:focus,
+        .back-btn:focus {
+            outline: 3px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px 10px;
+            }
+            
+            .form-card {
+                padding: 20px;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+            
+            .info-box h2 {
+                font-size: 1.5em !important;
+            }
+        }
+    </style>
+
+    <script>
+        // Inicializa a validação do formulário quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o FormValidator está disponível
+            if (typeof FormValidator !== 'undefined') {
+                FormValidator.initializeForm('mentoria-form');
+            }
+            
+            // Configuração do formulário para SPA
+            const form = document.getElementById('mentoria-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const submitBtn = this.querySelector('.submit-btn');
+                    
+                    // Se o FormValidator estiver disponível, usa ele
+                    if (typeof FormValidator !== 'undefined') {
+                        const isValid = FormValidator.validateForm(this);
+                        if (!isValid) {
+                            e.preventDefault();
+                            return;
+                        }
+                    }
+                    
+                    // Loading state
+                    submitBtn.textContent = '🔄 ENVIANDO...';
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('loading');
+                    
+                    // Redirecionamento via SPA após envio bem-sucedido
+                    setTimeout(() => {
+                        window.location.hash = '#/formobrigado';
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
