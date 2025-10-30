@@ -1,47 +1,6 @@
 /* src/css/accessibility.css - Recursos de Acessibilidade WCAG 2.1 AA */
 
-/* ===== MODOS DE ACESSIBILIDADE ===== */
-
-/* Modo Alto Contraste */
-.high-contrast {
-    --text-light: #000000 !important;
-    --text-dark: #FFFFFF !important;
-    --dark-bg: #FFFFFF !important;
-    --darker-bg: #F0F0F0 !important;
-    --light-bg: #E8E8E8 !important;
-    filter: contrast(200%) !important;
-}
-
-.high-contrast .card,
-.high-contrast .nav-main,
-.high-contrast .section-light {
-    background: #FFFFFF !important;
-    color: #000000 !important;
-    border: 2px solid #000000 !important;
-}
-
-/* Modo Daltonismo (Protanopia) */
-.colorblind-friendly {
-    --accent-red: #0072B2 !important;
-    --accent-blue: #56B4E9 !important;
-    --accent-orange: #E69F00 !important;
-    --accent-purple: #CC79A7 !important;
-}
-
-/* Modo Leitura Fácil */
-.reading-mode {
-    --text-light: #000000 !important;
-    --text-dark: #000000 !important;
-    --dark-bg: #FFFFF0 !important;
-    --darker-bg: #F5F5DC !important;
-    font-family: "Comic Sans MS", "Arial Rounded MT Bold", sans-serif !important;
-    font-size: 1.1em !important;
-    line-height: 1.8 !important;
-}
-
 /* ===== CONTROLES DE ACESSIBILIDADE ===== */
-
-/* Container dos controles */
 .accessibility-controls {
     position: fixed;
     top: 50%;
@@ -55,6 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    border: 2px solid var(--accent-orange);
 }
 
 .accessibility-btn {
@@ -78,29 +38,74 @@
     transform: scale(1.1);
 }
 
+.accessibility-btn[aria-pressed="true"] {
+    background: var(--accent-orange) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-orange) !important;
+}
+
+/* ===== MODOS DE ACESSIBILIDADE ===== */
+.high-contrast {
+    --text-light: #000000 !important;
+    --text-dark: #FFFFFF !important;
+    --dark-bg: #FFFFFF !important;
+    --darker-bg: #F0F0F0 !important;
+    --light-bg: #E8E8E8 !important;
+    filter: contrast(200%) !important;
+}
+
+.high-contrast .card,
+.high-contrast .nav-main,
+.high-contrast .section-light {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+.high-contrast .btn {
+    border: 2px solid #000000 !important;
+    font-weight: bold !important;
+}
+
+/* Modo Leitura */
+.reading-mode {
+    --text-light: #000000 !important;
+    --text-dark: #000000 !important;
+    --dark-bg: #FFFFF0 !important;
+    --darker-bg: #F5F5DC !important;
+    font-family: "Comic Sans MS", "Arial Rounded MT Bold", sans-serif !important;
+    font-size: 1.1em !important;
+    line-height: 1.8 !important;
+}
+
+.reading-mode .card {
+    background: #FFFFF0 !important;
+    color: #000000 !important;
+    border: 2px solid #8B4513 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.reading-mode .nav-main {
+    background: #8B4513 !important;
+}
+
+/* ===== TAMANHOS DE FONTE ===== */
+.font-large {
+    font-size: 1.2em !important;
+    line-height: 1.8 !important;
+}
+
+.font-xlarge {
+    font-size: 1.4em !important;
+    line-height: 2 !important;
+}
+
+.font-xxlarge {
+    font-size: 1.6em !important;
+    line-height: 2.2 !important;
+}
+
 /* ===== FOCUS E NAVEGAÇÃO POR TECLADO ===== */
-
-/* Estilos de foco visíveis */
-a:focus,
-button:focus,
-.nav-link:focus,
-.btn:focus,
-.download-btn:focus {
-    outline: 3px solid #FF4757 !important;
-    outline-offset: 3px !important;
-    background-color: rgba(255, 71, 87, 0.1) !important;
-}
-
-/* Foco para elementos de formulário */
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 3px solid #3742fa !important;
-    outline-offset: 2px !important;
-    border-color: #3742fa !important;
-}
-
-/* Skip link para navegação por teclado */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -119,9 +124,24 @@ textarea:focus {
     outline: 3px solid #FFFFFF;
 }
 
-/* ===== SUPORTE A LEITORES DE TELA ===== */
+a:focus,
+button:focus,
+.nav-link:focus,
+.btn:focus {
+    outline: 3px solid #FF4757 !important;
+    outline-offset: 3px !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+}
 
-/* Esconder elementos visualmente (mas acessíveis para screen readers) */
+.focused {
+    outline: 3px solid #FF4757 !important;
+    outline-offset: 3px !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+    transform: scale(1.02) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* ===== SUPORTE A LEITORES DE TELA ===== */
 .sr-only {
     position: absolute !important;
     width: 1px !important;
@@ -134,36 +154,19 @@ textarea:focus {
     border: 0 !important;
 }
 
-/* Indicar elementos interativos para screen readers */
-[aria-expanded]::after {
-    content: " (pressione Enter para expandir)";
-    font-size: 0.8em;
-    opacity: 0.7;
+#screen-reader-announcer {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
-/* ===== TIPOGRAFIA ACESSÍVEL ===== */
-
-/* Aumentar tamanho da fonte */
-.font-large {
-    font-size: 1.2em !important;
-    line-height: 1.8 !important;
-}
-
-.font-xlarge {
-    font-size: 1.4em !important;
-    line-height: 2 !important;
-}
-
-/* Espaçamento aumentado para leitura */
-.spacing-increased {
-    letter-spacing: 0.05em !important;
-    word-spacing: 0.1em !important;
-    line-height: 2 !important;
-}
-
-/* ===== ANIMAÇÕES E TRANSITIONS ===== */
-
-/* Reduzir movimento para usuários sensíveis */
+/* ===== ANIMAÇÕES REDUZIDAS ===== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -175,62 +178,12 @@ textarea:focus {
     }
 }
 
-/* Desabilitar animações */
 .no-animation * {
     animation: none !important;
     transition: none !important;
 }
 
-/* ===== CONTRASTE E CORES ===== */
-
-/* Garantir contraste mínimo */
-.contrast-check {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-}
-
-/* Texto sempre legível */
-.ensure-contrast {
-    background: linear-gradient(to bottom, var(--dark-bg), var(--darker-bg)) !important;
-    color: var(--text-light) !important;
-}
-
-/* ===== FORMULÁRIOS ACESSÍVEIS ===== */
-
-/* Labels sempre visíveis */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: var(--text-dark);
-}
-
-/* Campos de formulário com bom contraste */
-input, select, textarea {
-    background: white !important;
-    color: #000000 !important;
-    border: 2px solid #666666 !important;
-    padding: 0.75rem !important;
-    border-radius: 4px !important;
-    font-size: 1rem !important;
-}
-
-/* Estados de validação */
-input:invalid {
-    border-color: #FF4757 !important;
-    background-color: rgba(255, 71, 87, 0.1) !important;
-}
-
-input:valid {
-    border-color: #2ED573 !important;
-}
-
-/* ===== RESPONSIVIDADE ACESSÍVEL ===== */
-
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
     .accessibility-controls {
         position: fixed;
@@ -250,185 +203,11 @@ input:valid {
     }
 }
 
-/* ===== UTILITÁRIOS ===== */
-
-/* Indicador visual de estado */
-[aria-current="page"] {
-    background-color: var(--accent-orange) !important;
-    color: white !important;
-    font-weight: bold;
-}
-
-/* Loading states para screen readers */
-[aria-busy="true"]::before {
-    content: "Carregando... ";
-}
-
-/* Estados de erro e sucesso */
-[aria-invalid="true"] {
-    border-color: #FF4757 !important;
-    background-color: rgba(255, 71, 87, 0.1) !important;
-}
-
-[aria-grabbed="true"] {
-    opacity: 0.6;
-}
-
-
-.font-xxlarge {
-    font-size: 1.6em !important;
-    line-height: 2.2 !important;
-}
-
-.focused {
-    outline: 3px solid #FF4757 !important;
-    outline-offset: 3px !important;
-    background-color: rgba(255, 71, 87, 0.1) !important;
-}
-
-/* ===== CLASSES ADICIONAIS PARA O APP.JS ===== */
-
-/* Tamanho de fonte extra grande */
-.font-xxlarge {
-    font-size: 1.6em !important;
-    line-height: 2.2 !important;
-}
-
-/* Estado de foco aprimorado */
-.focused {
-    outline: 3px solid #FF4757 !important;
-    outline-offset: 3px !important;
-    background-color: rgba(255, 71, 87, 0.1) !important;
-    transform: scale(1.02) !important;
-    transition: all 0.2s ease !important;
-}
-
-/* Anunciador para leitores de tela (já existe, mas vamos garantir) */
-#screen-reader-announcer {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-}
-
-/* Estados dos botões de acessibilidade */
-.accessibility-btn[aria-pressed="true"] {
-    background: var(--accent-orange) !important;
-    transform: scale(1.1) !important;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-orange) !important;
-}
-
-/* Feedback visual para interações */
-.accessibility-btn:active {
-    transform: scale(0.95) !important;
-}
-
-/* Melhorias para modo leitura */
-.reading-mode .card {
-    background: #FFFFF0 !important;
-    color: #000000 !important;
-    border: 2px solid #8B4513 !important;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
-}
-
-.reading-mode .nav-main {
-    background: #8B4513 !important;
-}
-
-/* Melhorias para alto contraste */
-.high-contrast .btn {
-    border: 2px solid #000000 !important;
-    font-weight: bold !important;
-}
-
-.high-contrast .card {
-    border: 3px solid #000000 !important;
-}
-
-/* Animações suaves para transições de acessibilidade */
+/* ===== TRANSITIONS SUAVES ===== */
 body {
     transition: 
         background-color 0.3s ease,
         color 0.3s ease,
         font-size 0.3s ease,
         filter 0.3s ease;
-}
-
-/* Suporte para reduzir movimento */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
-    .accessibility-btn {
-        transition: none !important;
-    }
-}
-
-/* Melhorias para navegação por teclado */
-.nav-link:focus,
-.btn:focus {
-    position: relative !important;
-    z-index: 100 !important;
-}
-
-/* Estados para elementos interativos */
-button:not(:disabled):hover,
-a:not(:disabled):hover {
-    cursor: pointer !important;
-}
-
-/* Loader acessível (para futuras implementações) */
-.loader {
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #3498db;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    animation: spin 2s linear infinite;
-}
-
-.loader[aria-hidden="true"] {
-    display: none;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Utilitários para tamanhos de fonte */
-.text-sm { font-size: 0.875em !important; }
-.text-lg { font-size: 1.125em !important; }
-.text-xl { font-size: 1.25em !important; }
-.text-2xl { font-size: 1.5em !important; }
-
-/* Espaçamento para leitura */
-.reading-mode p,
-.reading-mode li {
-    margin-bottom: 1.5em !important;
-}
-
-/* Foco personalizado para diferentes modos */
-.high-contrast a:focus,
-.high-contrast button:focus {
-    outline: 3px solid #FFFF00 !important;
-    background-color: #000000 !important;
-    color: #FFFF00 !important;
-}
-
-.reading-mode a:focus,
-.reading-mode button:focus {
-    outline: 3px solid #8B4513 !important;
-    background-color: #F5F5DC !important;
 }
