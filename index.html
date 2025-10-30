@@ -105,13 +105,27 @@
             display: block;
         }
 
-        /* Correção para controles ficarem fixos */
+        /* 🎯 CORREÇÃO DO MENU DE ACESSIBILIDADE */
         .accessibility-controls {
-            position: fixed !important;
-            top: 50% !important;
-            right: 0 !important;
-            transform: translateY(-50%) !important;
-            z-index: 10000 !important;
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: var(--darker-bg);
+            padding: 10px;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 2px solid var(--accent-orange);
+            display: none; /* ⬅️ Começa escondido */
+        }
+
+        /* ⬇️⬇️⬇️ MOSTRA O MENU QUANDO SPA CARREGA ⬇️⬇️⬇️ */
+        .spa-loaded .accessibility-controls {
+            display: flex !important;
         }
 
         @media (max-width: 768px) {
@@ -133,6 +147,7 @@
                 bottom: 0 !important;
                 right: 50% !important;
                 transform: translateX(50%) !important;
+                flex-direction: row;
             }
         }
     </style>
@@ -150,25 +165,25 @@
         </div>
     </header>
 
+    <!-- 🎯 MENU DE ACESSIBILIDADE FIXO FORA DO APP -->
+    <!-- Agora vai aparecer em TODAS as páginas do SPA -->
+    <div class="accessibility-controls" aria-label="Controles de acessibilidade">
+        <button class="accessibility-btn" id="highContrastBtn" aria-label="Ativar modo alto contraste" title="Alto Contraste">
+            🌗
+        </button>
+        <button class="accessibility-btn" id="fontSizeBtn" aria-label="Aumentar tamanho da fonte" title="Fonte Maior">
+            🔍
+        </button>
+        <button class="accessibility-btn" id="readingModeBtn" aria-label="Ativar modo de leitura" title="Modo Leitura">
+            📖
+        </button>
+        <button class="accessibility-btn" id="resetAccessibilityBtn" aria-label="Redefinir todas as configurações de acessibilidade" title="Redefinir">
+            🔄
+        </button>
+    </div>
+
     <!-- Aplicação SPA -->
     <div id="app">
-        <!-- 🎯 MENU DE ACESSIBILIDADE AGORA DENTRO DO APP -->
-        <!-- Isso faz com que apareça em TODAS as páginas -->
-        <div class="accessibility-controls" aria-label="Controles de acessibilidade">
-            <button class="accessibility-btn" id="highContrastBtn" aria-label="Ativar modo alto contraste" title="Alto Contraste">
-                🌗
-            </button>
-            <button class="accessibility-btn" id="fontSizeBtn" aria-label="Aumentar tamanho da fonte" title="Fonte Maior">
-                🔍
-            </button>
-            <button class="accessibility-btn" id="readingModeBtn" aria-label="Ativar modo de leitura" title="Modo Leitura">
-                📖
-            </button>
-            <button class="accessibility-btn" id="resetAccessibilityBtn" aria-label="Redefinir todas as configurações de acessibilidade" title="Redefinir">
-                🔄
-            </button>
-        </div>
-        
         <!-- Aqui as páginas SPA serão carregadas -->
     </div>
 
