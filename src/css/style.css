@@ -1,4 +1,4 @@
-/* src/css/style.css - Base Styles for Platina Para Todos */
+/* src/css/style.css - Estilos Base Platina Para Todos */
 :root {
     /* Cores principais */
     --accent-red: #ff4757;
@@ -157,6 +157,21 @@ h3 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* Utilitários */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
+
 /* Responsividade */
 @media (max-width: 768px) {
     .nav-main {
@@ -191,18 +206,3 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
-
-/* Utilitários */
-.text-center {
-    text-align: center;
-}
-
-.mt-1 { margin-top: var(--space-xs); }
-.mt-2 { margin-top: var(--space-sm); }
-.mt-3 { margin-top: var(--space-md); }
-.mt-4 { margin-top: var(--space-lg); }
-
-.mb-1 { margin-bottom: var(--space-xs); }
-.mb-2 { margin-bottom: var(--space-sm); }
-.mb-3 { margin-bottom: var(--space-md); }
-.mb-4 { margin-bottom: var(--space-lg); }
