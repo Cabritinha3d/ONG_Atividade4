@@ -27,21 +27,24 @@
 
     <!-- Navegação Principal -->
     <nav class="nav-main" aria-label="Navegação principal">
-        <a href="#/home" class="nav-link" aria-current="page">🏠 INÍCIO</a>
+        <a href="#/home" class="nav-link" aria-current="page" data-route="home">🏠 INÍCIO</a>
         <a href="#sobre" class="nav-link">📖 SOBRE</a>
-        <a href="#/projetos" class="nav-link">🎯 MENTORIA</a>
-        <a href="#/guias" class="nav-link">📚 GUIAS</a>
-        <a href="#/discord" class="nav-link">💬 DISCORD</a>
+        <a href="#/projetos" class="nav-link" data-route="projetos">🎯 MENTORIA</a>
+        <a href="#/guias" class="nav-link" data-route="guias">📚 GUIAS</a>
+        <a href="#/grupos" class="nav-link" data-route="grupos">👥 GRUPOS</a>
+        <a href="#/eventos" class="nav-link" data-route="eventos">🎪 EVENTOS</a>
+        <a href="#/discord" class="nav-link" data-route="discord">💬 DISCORD</a>
+        <a href="#/doacao" class="nav-link" data-route="doacao">💝 DOAÇÃO</a>
     </nav>
 
     <!-- Conteúdo Principal -->
     <main id="main-content">
         <!-- Sobre Section -->
-        <section id="sobre" class="section section-light">
+        <section id="sobre" class="section section-light" aria-labelledby="sobre-title">
             <div class="container">
                 <!-- Card Objetivo -->
                 <div class="objective-card">
-                    <h2 class="title-badge">🎯 NOSSO OBJETIVO</h2>
+                    <h2 id="sobre-title" class="title-badge">🎯 NOSSO OBJETIVO</h2>
                     <p>
                         <strong>Democratizar o acesso à conclusão total de jogos!</strong> Criamos uma rede de apoio onde gamers 
                         experientes ajudam iniciantes a superar desafios, conquistar troféus e, o mais importante: 
@@ -52,38 +55,50 @@
                 <!-- Grid com Menu Lateral e Conteúdo -->
                 <div class="grid grid-sidebar">
                     <!-- Menu Lateral -->
-                    <aside>
+                    <aside aria-labelledby="servicos-title">
                         <div class="service-menu">
-                            <h3>NOSSOS SERVIÇOS</h3>
+                            <h3 id="servicos-title">NOSSOS SERVIÇOS</h3>
                             <p>Escolha como podemos te ajudar</p>
                             
-                            <a href="#/projetos" class="service-link">
+                            <a href="#/projetos" class="service-link" data-route="projetos">
                                 <div class="service-item" style="border-left-color: var(--accent-red);">
                                     <strong>🎯 MENTORIA</strong>
+                                    <p>Acompanhamento individual</p>
                                 </div>
                             </a>
                             
-                            <a href="#/guias" class="service-link">
+                            <a href="#/guias" class="service-link" data-route="guias">
                                 <div class="service-item" style="border-left-color: var(--accent-blue);">
                                     <strong>📚 GUIAS</strong>
+                                    <p>Tutoriais e walkthroughs</p>
                                 </div>
                             </a>
                             
-                            <a href="#/grupos" class="service-link">
+                            <a href="#/grupos" class="service-link" data-route="grupos">
                                 <div class="service-item" style="border-left-color: var(--accent-orange);">
                                     <strong>👥 GRUPOS</strong>
+                                    <p>Comunidades por jogo</p>
                                 </div>
                             </a>
                             
-                            <a href="#/eventos" class="service-link">
+                            <a href="#/eventos" class="service-link" data-route="eventos">
                                 <div class="service-item" style="border-left-color: var(--accent-purple);">
                                     <strong>🎪 EVENTOS</strong>
+                                    <p>Maratonas e competições</p>
                                 </div>
                             </a>
                             
-                            <a href="#/discord" class="service-link">
-                                <div class="service-item" style="border-left-color: var(--accent-blue);">
+                            <a href="#/discord" class="service-link" data-route="discord">
+                                <div class="service-item" style="border-left-color: var(--accent-green);">
                                     <strong>💬 DISCORD</strong>
+                                    <p>Comunidade ativa</p>
+                                </div>
+                            </a>
+
+                            <a href="#/doacao" class="service-link" data-route="doacao">
+                                <div class="service-item" style="border-left-color: var(--accent-red);">
+                                    <strong>💝 DOAÇÃO</strong>
+                                    <p>Apoie nossa comunidade</p>
                                 </div>
                             </a>
                         </div>
@@ -128,10 +143,10 @@
 
                                 <!-- Botão de Ação -->
                                 <div class="button-group">
-                                    <a href="#/cadastro" class="btn btn-primary">
+                                    <a href="#/cadastro" class="btn btn-primary" data-route="cadastro">
                                         🎮 QUERO ME CADASTRAR
                                     </a>
-                                    <a href="#/discord" class="btn btn-accent">
+                                    <a href="#/discord" class="btn btn-accent" data-route="discord">
                                         💬 ENTRAR NO DISCORD
                                     </a>
                                 </div>
@@ -143,9 +158,9 @@
         </section>
 
         <!-- Relatos Section -->
-        <section id="relatos" class="section section-dark">
+        <section id="relatos" class="section section-dark" aria-labelledby="relatos-title">
             <div class="container">
-                <h2 class="title-badge">💙 HISTÓRIAS INSPIRADORAS</h2>
+                <h2 id="relatos-title" class="title-badge">💙 HISTÓRIAS INSPIRADORAS</h2>
                 
                 <div class="grid grid-2">
                     <!-- Depoimento 1 -->
@@ -160,7 +175,7 @@
                     <!-- Depoimento 2 -->
                     <div class="testimonial">
                         <h4 style="color: var(--accent-red);">👑 Aninha_Gameplay</h4>
-                        <p><em>"Meu irmão sempre me zoava. Com a Rainha_Dos_Boss, platinsei Sekiro e calei a boca dele!"</em></p>
+                        <p><em>"Meu irmão sempre me zoava. Com a Rainha_Dos_Boss, platinhei Sekiro e calei a boca dele!"</em></p>
                         <div class="testimonial-status">
                             <p><strong>Status:</strong> 🏆 PLATINA | 👊 IRMÃO HUMILHADO</p>
                         </div>
@@ -188,9 +203,9 @@
         </section>
 
         <!-- Doação Section -->
-        <section id="doacao" class="section section-gradient">
+        <section id="doacao" class="section section-gradient" aria-labelledby="doacao-title">
             <div class="container">
-                <h2>🚀 JUNTE-SE A NOSSA MISSÃO!</h2>
+                <h2 id="doacao-title">🚀 JUNTE-SE A NOSSA MISSÃO!</h2>
                 <div class="stats-card">
                     <p>+800 gamers salvos | +1500 controles poupados | +200 relacionamentos salvos</p>
                 </div>
@@ -199,8 +214,11 @@
                 </p>
                 
                 <div class="button-group">
-                    <a href="#/doacao" class="btn btn-accent">
+                    <a href="#/doacao" class="btn btn-accent" data-route="doacao">
                         💝 QUERO DOAR
+                    </a>
+                    <a href="#/cadastro" class="btn btn-primary" data-route="cadastro">
+                        🎮 QUERO MENTORIA
                     </a>
                 </div>
             </div>
@@ -208,10 +226,10 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
-            <p>📧 misscabritas2@gmail.com</p>
-            <p>🔗 <a href="#/discord" style="color: white;">Entre no nosso Discord</a></p>
+            <p>📧 <a href="mailto:misscabritas2@gmail.com" style="color: white;">misscabritas2@gmail.com</a></p>
+            <p>🔗 <a href="#/discord" style="color: white;" data-route="discord">Entre no nosso Discord</a></p>
             <p>Platina Para Todos &copy; 2007</p>
         </div>
     </footer>
