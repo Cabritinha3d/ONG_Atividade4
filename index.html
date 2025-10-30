@@ -279,8 +279,11 @@
                 this.isHighContrast = false;
                 this.isReadingMode = false;
                 
-                // Remove apenas as classes de acessibilidade, mantendo o SPA
+                // Remove apenas as classes de acessibilidade, MANTENDO o SPA
                 document.body.classList.remove('high-contrast', 'reading-mode', 'font-large', 'font-xlarge', 'font-xxlarge');
+                
+                // ⬇️⬇️⬇️ CORREÇÃO: GARANTE QUE O SPA CONTINUE CARREGADO ⬇️⬇️⬇️
+                document.body.classList.add('spa-loaded');
                 
                 // Reseta todos os botões
                 const buttons = ['highContrastBtn', 'fontSizeBtn', 'readingModeBtn'];
@@ -438,15 +441,32 @@
 
         function handleNavigation() {
             const page = getCurrentPage();
+            
+            // ⬇️⬇️⬇️ CORREÇÃO: Não recarrega se já estiver na mesma página ⬇️⬇️⬇️
+            if (page === currentPage && document.body.classList.contains('spa-loaded')) {
+                return; // Já está na página, não faz nada
+            }
+            
             loadPage(page);
             document.body.classList.add('spa-loaded');
         }
 
-        // Event Listeners
+        // ⬇️⬇️⬇️ EVENT LISTENERS CORRIGIDOS ⬇️⬇️⬇️
         document.getElementById('enter-site').addEventListener('click', function() {
             this.textContent = '🚀 CARREGANDO...';
             this.disabled = true;
-            window.location.hash = '#/home';
+            
+            // ⬇️⬇️⬇️ CORREÇÃO: Verifica se já está na home ⬇️⬇️⬇️
+            const currentHash = window.location.hash;
+            if (currentHash === '#/home' || currentHash === '' || currentHash === '#') {
+                // Já está na home, apenas esconde o banner e mostra o app
+                document.body.classList.add('spa-loaded');
+                // Recarrega a home para garantir que tudo funcione
+                loadPage('home');
+            } else {
+                // Vai para a home
+                window.location.hash = '#/home';
+            }
         });
 
         window.addEventListener('hashchange', handleNavigation);
@@ -479,6 +499,13 @@
                 enterBtn.disabled = false;
             }
         });
+
+        // ⬇️⬇️⬇️ CORREÇÃO EXTRA: Garante que o SPA carregue mesmo com problemas ⬇️⬇️⬇️
+        setTimeout(() => {
+            if (!document.body.classList.contains('spa-loaded') && window.location.hash) {
+                handleNavigation();
+            }
+        }, 1000);
     </script>
 </body>
 </html>
