@@ -151,7 +151,26 @@
     </header>
 
     <!-- Aplicação SPA -->
-    <div id="app"></div>
+    <div id="app">
+        <!-- 🎯 MENU DE ACESSIBILIDADE AGORA DENTRO DO APP -->
+        <!-- Isso faz com que apareça em TODAS as páginas -->
+        <div class="accessibility-controls" aria-label="Controles de acessibilidade">
+            <button class="accessibility-btn" id="highContrastBtn" aria-label="Ativar modo alto contraste" title="Alto Contraste">
+                🌗
+            </button>
+            <button class="accessibility-btn" id="fontSizeBtn" aria-label="Aumentar tamanho da fonte" title="Fonte Maior">
+                🔍
+            </button>
+            <button class="accessibility-btn" id="readingModeBtn" aria-label="Ativar modo de leitura" title="Modo Leitura">
+                📖
+            </button>
+            <button class="accessibility-btn" id="resetAccessibilityBtn" aria-label="Redefinir todas as configurações de acessibilidade" title="Redefinir">
+                🔄
+            </button>
+        </div>
+        
+        <!-- Aqui as páginas SPA serão carregadas -->
+    </div>
 
     <!-- JavaScript -->
     <script src="src/js/app.js"></script>
