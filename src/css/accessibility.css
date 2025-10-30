@@ -273,3 +273,16 @@ input:valid {
 [aria-grabbed="true"] {
     opacity: 0.6;
 }
+
+/* Adicione isso no final do src/css/accessibility.css */
+
+.font-xxlarge {
+    font-size: 1.6em !important;
+    line-height: 2.2 !important;
+}
+
+.focused {
+    outline: 3px solid #FF4757 !important;
+    outline-offset: 3px !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+}
