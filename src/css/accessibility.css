@@ -274,7 +274,6 @@ input:valid {
     opacity: 0.6;
 }
 
-/* Adicione isso no final do src/css/accessibility.css */
 
 .font-xxlarge {
     font-size: 1.6em !important;
@@ -285,4 +284,151 @@ input:valid {
     outline: 3px solid #FF4757 !important;
     outline-offset: 3px !important;
     background-color: rgba(255, 71, 87, 0.1) !important;
+}
+
+/* ===== CLASSES ADICIONAIS PARA O APP.JS ===== */
+
+/* Tamanho de fonte extra grande */
+.font-xxlarge {
+    font-size: 1.6em !important;
+    line-height: 2.2 !important;
+}
+
+/* Estado de foco aprimorado */
+.focused {
+    outline: 3px solid #FF4757 !important;
+    outline-offset: 3px !important;
+    background-color: rgba(255, 71, 87, 0.1) !important;
+    transform: scale(1.02) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Anunciador para leitores de tela (já existe, mas vamos garantir) */
+#screen-reader-announcer {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Estados dos botões de acessibilidade */
+.accessibility-btn[aria-pressed="true"] {
+    background: var(--accent-orange) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--accent-orange) !important;
+}
+
+/* Feedback visual para interações */
+.accessibility-btn:active {
+    transform: scale(0.95) !important;
+}
+
+/* Melhorias para modo leitura */
+.reading-mode .card {
+    background: #FFFFF0 !important;
+    color: #000000 !important;
+    border: 2px solid #8B4513 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.reading-mode .nav-main {
+    background: #8B4513 !important;
+}
+
+/* Melhorias para alto contraste */
+.high-contrast .btn {
+    border: 2px solid #000000 !important;
+    font-weight: bold !important;
+}
+
+.high-contrast .card {
+    border: 3px solid #000000 !important;
+}
+
+/* Animações suaves para transições de acessibilidade */
+body {
+    transition: 
+        background-color 0.3s ease,
+        color 0.3s ease,
+        font-size 0.3s ease,
+        filter 0.3s ease;
+}
+
+/* Suporte para reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .accessibility-btn {
+        transition: none !important;
+    }
+}
+
+/* Melhorias para navegação por teclado */
+.nav-link:focus,
+.btn:focus {
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Estados para elementos interativos */
+button:not(:disabled):hover,
+a:not(:disabled):hover {
+    cursor: pointer !important;
+}
+
+/* Loader acessível (para futuras implementações) */
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+}
+
+.loader[aria-hidden="true"] {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Utilitários para tamanhos de fonte */
+.text-sm { font-size: 0.875em !important; }
+.text-lg { font-size: 1.125em !important; }
+.text-xl { font-size: 1.25em !important; }
+.text-2xl { font-size: 1.5em !important; }
+
+/* Espaçamento para leitura */
+.reading-mode p,
+.reading-mode li {
+    margin-bottom: 1.5em !important;
+}
+
+/* Foco personalizado para diferentes modos */
+.high-contrast a:focus,
+.high-contrast button:focus {
+    outline: 3px solid #FFFF00 !important;
+    background-color: #000000 !important;
+    color: #FFFF00 !important;
+}
+
+.reading-mode a:focus,
+.reading-mode button:focus {
+    outline: 3px solid #8B4513 !important;
+    background-color: #F5F5DC !important;
 }
