@@ -86,12 +86,6 @@
             box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
         }
 
-        .banner-cta:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
         /* SPA Styles */
         #app {
             display: none;
@@ -103,15 +97,6 @@
 
         .spa-loaded #app {
             display: block;
-        }
-
-        /* Correção para controles ficarem fixos */
-        .accessibility-controls {
-            position: fixed !important;
-            top: 50% !important;
-            right: 0 !important;
-            transform: translateY(-50%) !important;
-            z-index: 10000 !important;
         }
 
         @media (max-width: 768px) {
@@ -126,13 +111,6 @@
             .banner-cta {
                 padding: 12px 30px;
                 font-size: 1rem;
-            }
-
-            .accessibility-controls {
-                top: auto !important;
-                bottom: 0 !important;
-                right: 50% !important;
-                transform: translateX(50%) !important;
             }
         }
     </style>
@@ -245,8 +223,7 @@
                 this.isHighContrast = false;
                 this.isReadingMode = false;
                 
-                // Remove apenas as classes de acessibilidade, mantendo o SPA
-                document.body.classList.remove('high-contrast', 'reading-mode', 'font-large', 'font-xlarge', 'font-xxlarge');
+                document.body.className = '';
                 
                 // Reseta todos os botões
                 const buttons = ['highContrastBtn', 'fontSizeBtn', 'readingModeBtn'];
@@ -256,7 +233,7 @@
                 });
                 
                 this.saveUserPreferences();
-                console.log('🔄 Acessibilidade resetada (SPA mantido)');
+                console.log('🔄 Acessibilidade resetada');
             }
 
             handleKeyboardNavigation(event) {
@@ -326,7 +303,6 @@
 
         // Sistema SPA Principal
         let spaAccessibilityManager = null;
-        let currentPage = 'home';
 
         function initializeSPA() {
             if (!spaAccessibilityManager) {
@@ -350,7 +326,7 @@
                 });
             });
 
-            console.log('✅ SPA inicializado para:', currentPage);
+            console.log('✅ SPA inicializado com acessibilidade');
         }
 
         function loadPage(page) {
@@ -359,10 +335,7 @@
                 return;
             }
 
-            currentPage = page;
             const app = document.getElementById('app');
-            const enterBtn = document.getElementById('enter-site');
-            
             app.innerHTML = '<div class="spa-loading">🚀 Carregando...</div>';
             
             fetch(`src/pages/${page}.html`)
@@ -375,24 +348,11 @@
                     window.scrollTo(0, 0);
                     window.history.pushState({}, '', `#/${page}`);
                     
-                    // RESETA O BOTÃO "COMEÇAR SUA JORNADA"
-                    if (enterBtn) {
-                        enterBtn.textContent = 'Comece Sua Jornada';
-                        enterBtn.disabled = false;
-                    }
-                    
                     // INICIALIZA A ACESSIBILIDADE PARA A NOVA PÁGINA
                     setTimeout(initializeSPA, 50);
                 })
                 .catch(error => {
-                    console.error('Erro ao carregar página:', error);
-                    
-                    // RESETA O BOTÃO MESMO EM CASO DE ERRO
-                    if (enterBtn) {
-                        enterBtn.textContent = 'Comece Sua Jornada';
-                        enterBtn.disabled = false;
-                    }
-                    
+                    console.error('Erro:', error);
                     loadPage('404');
                 });
         }
@@ -403,8 +363,8 @@
         }
 
         function handleNavigation() {
-            const page = getCurrentPage();
-            loadPage(page);
+            const currentPage = getCurrentPage();
+            loadPage(currentPage);
             document.body.classList.add('spa-loaded');
         }
 
@@ -418,13 +378,12 @@
         window.addEventListener('hashchange', handleNavigation);
         
         window.addEventListener('DOMContentLoaded', function() {
-            // Inicializa acessibilidade global
-            spaAccessibilityManager = new SPAAccessibilityManager();
-            
-            // Verifica se já tem hash na URL
             if (window.location.hash) {
                 handleNavigation();
             }
+            
+            // Inicializa acessibilidade global
+            spaAccessibilityManager = new SPAAccessibilityManager();
         });
 
         // Suporte a navegação SPA para links
@@ -433,16 +392,6 @@
             if (link && link.href && link.href.includes('#/')) {
                 e.preventDefault();
                 window.location.hash = new URL(link.href).hash;
-            }
-        });
-
-        // Fallback para erro de carregamento
-        window.addEventListener('error', function(e) {
-            console.error('Erro global:', e);
-            const enterBtn = document.getElementById('enter-site');
-            if (enterBtn && enterBtn.disabled) {
-                enterBtn.textContent = 'Comece Sua Jornada';
-                enterBtn.disabled = false;
             }
         });
     </script>
