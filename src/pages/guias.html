@@ -5,112 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guias - Platina Para Todos</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
     <style>
-        /* Mantenha todos os estilos anteriores e adicione: */
+        .guia-header {
+            background: linear-gradient(135deg, var(--accent-blue), var(--darker-bg));
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+        }
+        .guia-categoria {
+            background: white;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent-blue);
+        }
+        .guia-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-blue);
+            transition: all 0.3s;
+        }
+        .guia-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .download-btn {
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover,
+        .download-btn:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .guia-notice {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 30px;
+        }
+        .back-btn {
+            background: var(--accent-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .back-btn:hover,
+        .back-btn:focus {
+            background: var(--accent-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
         
-        /* Melhor contraste para textos secundários */
-        .texto-descricao {
+        /* Garantir que o texto seja visível */
+        .guia-categoria,
+        .guia-categoria * {
+            color: #2f3542 !important;
+        }
+        
+        .guia-item h4,
+        .guia-item p {
+            color: #2f3542 !important;
+        }
+        
+        .guia-header h2,
+        .guia-header p {
+            color: white !important;
+        }
+
+        /* Melhorar contraste */
+        .guia-item p {
             color: #5d6d7e !important;
-        }
-        
-        /* Foco visível para navegação por teclado */
-        .download-btn:focus,
-        .back-btn:focus,
-        .nav-link:focus {
-            outline: 3px solid var(--accent-blue);
-            outline-offset: 2px;
-        }
-        
-        /* Esconder elementos visualmente mas manter para screen readers */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        /* Melhorar contraste nos links do aviso */
-        .guia-notice a {
-            color: #2c3e50 !important;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation com ARIA -->
+    <!-- Skip Link para Navegação por Teclado -->
+    <a href="#main-content" class="skip-link sr-only">Pular para o conteúdo principal</a>
+
+    <!-- Navegação Principal -->
     <nav class="nav-main" aria-label="Navegação principal">
-        <a href="../index.html" class="nav-link">🏠 <span class="sr-only">Voltar para</span> INÍCIO</a>
-        <a href="home.html" class="nav-link">📖 <span class="sr-only">Ir para</span> SOBRE</a>
-        <a href="projetos.html" class="nav-link">🎯 <span class="sr-only">Conhecer nossa</span> MENTORIA</a>
-        <a href="guias.html" class="nav-link" aria-current="page">📚 <span class="sr-only">Explorar</span> GUIAS</a>
-        <a href="discord.html" class="nav-link">💬 <span class="sr-only">Entrar no nosso</span> DISCORD</a>
+        <a href="#/home" class="nav-link">🏠 INÍCIO</a>
+        <a href="#/home" class="nav-link">📖 SOBRE</a>
+        <a href="#/projetos" class="nav-link">🎯 MENTORIA</a>
+        <a href="#/guias" class="nav-link" aria-current="page">📚 GUIAS</a>
+        <a href="#/grupos" class="nav-link">👥 GRUPOS</a>
+        <a href="#/eventos" class="nav-link">🎪 EVENTOS</a>
+        <a href="#/discord" class="nav-link">💬 DISCORD</a>
+        <a href="#/doacao" class="nav-link">💝 DOAÇÃO</a>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <section class="section section-light" aria-labelledby="biblioteca-guias">
+    <!-- Conteúdo Principal -->
+    <main id="main-content">
+        <!-- Guias Section -->
+        <section class="section section-light" aria-labelledby="guias-title">
             <div class="container">
                 <div class="guia-header">
-                    <h2 class="title-badge" style="background: var(--accent-blue);">
-                        <span aria-hidden="true">📚</span> 
-                        <span id="biblioteca-guias">BIBLIOTECA DE GUIAS</span>
-                    </h2>
+                    <h2 id="guias-title" class="title-badge">📚 BIBLIOTECA DE GUIAS</h2>
                     <p style="margin: 0; font-size: 1.1em;">Tudo que você precisa para platinar seus jogos favoritos!</p>
                 </div>
 
-                <!-- Categoria 1 com landmark -->
-                <section class="guia-categoria" aria-labelledby="jogos-dificeis">
-                    <h3 id="jogos-dificeis"><span aria-hidden="true">🎮</span> JOGOS DIFÍCEIS</h3>
+                <!-- Categoria 1 -->
+                <article class="guia-categoria" aria-labelledby="jogos-dificeis-title">
+                    <h3 id="jogos-dificeis-title" style="margin: 0 0 15px 0;">🎮 JOGOS DIFÍCEIS</h3>
                     
-                    <article class="guia-item">
-                        <h4 style="margin: 0 0 8px 0; color: var(--accent-red);">Sekiro: Shadows Die Twice</h4>
-                        <p style="margin: 0 0 10px 0;" class="texto-descricao">Guia completo de platinha + localização de todos os itens</p>
+                    <section class="guia-item" aria-labelledby="sekiro-title">
+                        <h4 id="sekiro-title" style="margin: 0 0 8px 0; color: var(--accent-red);">Sekiro: Shadows Die Twice</h4>
+                        <p style="margin: 0 0 10px 0;">Guia completo de platinha + localização de todos os itens</p>
                         <a href="https://drive.google.com/link-sekiro" class="download-btn" style="background: var(--accent-red);" 
-                           aria-label="Baixar guia de Sekiro: Shadows Die Twice em PDF">
-                           📥 Baixar PDF
-                        </a>
-                    </article>
+                           aria-label="Baixar guia de Sekiro Shadows Die Twice em PDF">📥 Baixar PDF</a>
+                    </section>
 
-                    <!-- Repetir o mesmo padrão para outros itens -->
-                    <article class="guia-item">
-                        <h4 style="margin: 0 0 8px 0; color: var(--accent-red);">Elden Ring</h4>
-                        <p style="margin: 0 0 10px 0;" class="texto-descricao">Mapa interativo + rota eficiente para platinar em 80h</p>
+                    <section class="guia-item" aria-labelledby="elden-ring-title">
+                        <h4 id="elden-ring-title" style="margin: 0 0 8px 0; color: var(--accent-red);">Elden Ring</h4>
+                        <p style="margin: 0 0 10px 0;">Mapa interativo + rota eficiente para platinar em 80h</p>
                         <a href="https://drive.google.com/link-eldenring" class="download-btn" style="background: var(--accent-red);"
-                           aria-label="Baixar guia de Elden Ring em PDF">
-                           📥 Baixar PDF
-                        </a>
-                    </article>
-                </section>
+                           aria-label="Baixar guia de Elden Ring em PDF">📥 Baixar PDF</a>
+                    </section>
 
-                <!-- AVISO melhorado -->
+                    <section class="guia-item" aria-labelledby="bloodborne-title">
+                        <h4 id="bloodborne-title" style="margin: 0 0 8px 0; color: var(--accent-red);">Bloodborne</h4>
+                        <p style="margin: 0 0 10px 0;">Builds otimizadas + localização de armas secretas</p>
+                        <a href="https://drive.google.com/link-bloodborne" class="download-btn" style="background: var(--accent-red);"
+                           aria-label="Baixar guia de Bloodborne em PDF">📥 Baixar PDF</a>
+                    </section>
+                </article>
+
+                <!-- Categoria 2 -->
+                <article class="guia-categoria" aria-labelledby="jogos-longos-title">
+                    <h3 id="jogos-longos-title" style="margin: 0 0 15px 0;">⏳ JOGOS LONGOS</h3>
+                    
+                    <section class="guia-item" aria-labelledby="red-dead-title">
+                        <h4 id="red-dead-title" style="margin: 0 0 8px 0; color: var(--accent-orange);">Red Dead Redemption 2</h4>
+                        <p style="margin: 0 0 10px 0;">Guia de missões secundárias + localização de animais raros + colecionáveis</p>
+                        <a href="https://drive.google.com/link-reddead" class="download-btn" style="background: var(--accent-orange);"
+                           aria-label="Baixar guia de Red Dead Redemption 2 em PDF">📥 Baixar PDF</a>
+                    </section>
+
+                    <section class="guia-item" aria-labelledby="witcher-title">
+                        <h4 id="witcher-title" style="margin: 0 0 8px 0; color: var(--accent-orange);">The Witcher 3</h4>
+                        <p style="margin: 0 0 10px 0;">Missões de Gwent + builds de magia + DLCs completas</p>
+                        <a href="https://drive.google.com/link-witcher" class="download-btn" style="background: var(--accent-orange);"
+                           aria-label="Baixar guia de The Witcher 3 em PDF">📥 Baixar PDF</a>
+                    </section>
+                </article>
+
+                <!-- Categoria 3 -->
+                <article class="guia-categoria" aria-labelledby="jogos-coop-title">
+                    <h3 id="jogos-coop-title" style="margin: 0 0 15px 0;">👥 JOGOS COOPERATIVOS</h3>
+                    
+                    <section class="guia-item" aria-labelledby="it-takes-two-title">
+                        <h4 id="it-takes-two-title" style="margin: 0 0 8px 0; color: var(--accent-purple);">It Takes Two</h4>
+                        <p style="margin: 0 0 10px 0;">Todos os minijogos + troféus em co-op</p>
+                        <a href="https://drive.google.com/link-ittakestwo" class="download-btn" style="background: var(--accent-purple);"
+                           aria-label="Baixar guia de It Takes Two em PDF">📥 Baixar PDF</a>
+                    </section>
+
+                    <section class="guia-item" aria-labelledby="overcooked-title">
+                        <h4 id="overcooked-title" style="margin: 0 0 8px 0; color: var(--accent-purple);">Overcooked 2</h4>
+                        <p style="margin: 0 0 10px 0;">Estratégias para 4 estrelas em todas as fases</p>
+                        <a href="https://drive.google.com/link-overcooked" class="download-btn" style="background: var(--accent-purple);"
+                           aria-label="Baixar guia de Overcooked 2 em PDF">📥 Baixar PDF</a>
+                    </section>
+                </article>
+
+                <!-- Categoria 4 -->
+                <article class="guia-categoria" aria-labelledby="jogos-rapidos-title">
+                    <h3 id="jogos-rapidos-title" style="margin: 0 0 15px 0;">🏆 JOGOS RÁPIDOS</h3>
+                    
+                    <section class="guia-item" aria-labelledby="astro-title">
+                        <h4 id="astro-title" style="margin: 0 0 8px 0; color: var(--accent-green);">Astro's Playroom</h4>
+                        <p style="margin: 0 0 10px 0;">Localização de todos os artefatos em 3h</p>
+                        <a href="https://drive.google.com/link-astro" class="download-btn" style="background: var(--accent-green);"
+                           aria-label="Baixar guia de Astro's Playroom em PDF">📥 Baixar PDF</a>
+                    </section>
+
+                    <section class="guia-item" aria-labelledby="spiderman-title">
+                        <h4 id="spiderman-title" style="margin: 0 0 8px 0; color: var(--accent-green);">Spider-Man: Miles Morales</h4>
+                        <p style="margin: 0 0 10px 0;">Rota rápida para platinar em 15h</p>
+                        <a href="https://drive.google.com/link-spiderman" class="download-btn" style="background: var(--accent-green);"
+                           aria-label="Baixar guia de Spider-Man Miles Morales em PDF">📥 Baixar PDF</a>
+                    </section>
+                </article>
+
+                <!-- AVISO -->
                 <div class="guia-notice" role="note" aria-label="Dica importante">
                     <p style="margin: 0; font-size: 0.9em;">
-                        <strong><span aria-hidden="true">💡</span> Dica:</strong> 
-                        Não encontrou o guia que procura? Peça no nosso 
-                        <a href="discord.html" style="color: #2c3e50 !important; font-weight: bold; text-decoration: underline;">Discord</a> 
-                        ou agende uma 
-                        <a href="projetos.html" style="color: #2c3e50 !important; font-weight: bold; text-decoration: underline;">Mentoria</a>!
+                        <strong>💡 Dica:</strong> Não encontrou o guia que procura? 
+                        Peça no nosso <a href="#/discord" style="color: var(--accent-blue); font-weight: bold;">Discord</a> 
+                        ou agende uma <a href="#/projetos" style="color: var(--accent-blue); font-weight: bold;">Mentoria</a>!
                     </p>
                 </div>
 
-                <!-- Botão Voltar com navegação lógica -->
+                <!-- Botão Voltar -->
                 <nav aria-label="Navegação secundária" style="text-align: center; margin-top: 40px;">
-                    <a href="home.html" class="back-btn">← Voltar para Home</a>
+                    <a href="#/home" class="back-btn">← Voltar para Home</a>
                 </nav>
             </div>
         </section>
     </main>
 
-    <!-- Footer com ARIA -->
+    <!-- Footer -->
     <footer class="footer" role="contentinfo">
         <div class="container">
-            <p>📧 misscabritas2@gmail.com</p>
-            <p>🔗 <a href="discord.html" style="color: white;">Entre no nosso Discord</a></p>
+            <p>📧 <a href="mailto:misscabritas2@gmail.com" style="color: white;">misscabritas2@gmail.com</a></p>
+            <p>🔗 <a href="#/discord" style="color: white;">Entre no nosso Discord</a></p>
             <p>Platina Para Todos &copy; 2007</p>
         </div>
     </footer>
